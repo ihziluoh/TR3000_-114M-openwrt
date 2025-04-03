@@ -24,5 +24,9 @@ sed -i 's/OpenWrt/Cudy-TR3000/g' package/base-files/files/bin/config_generate
 # 修改WIFI名称
 sed -i 's/OpenWrt/TR3000/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
+# 修改默认 WiFi 密码
+sed -i "/set wireless.default_radio\${devidx}.encryption=/c\        set wireless.default_radio\${devidx}.encryption='psk2'" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i "/set wireless.default_radio\${devidx}.key=/c\        set wireless.default_radio\${devidx}.key='123456'" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
 # 修改时区
 sed -i 's/UTC/Asia\/Shanghai/g' package/base-files/files/bin/config_generate
